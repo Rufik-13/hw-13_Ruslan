@@ -10,9 +10,9 @@
 		443B24E62A4EC13A000EC986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B24E52A4EC13A000EC986 /* AppDelegate.swift */; };
 		443B24E82A4EC13A000EC986 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B24E72A4EC13A000EC986 /* SceneDelegate.swift */; };
 		443B24EA2A4EC13A000EC986 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B24E92A4EC13A000EC986 /* ViewController.swift */; };
-		443B24ED2A4EC13A000EC986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443B24EB2A4EC13A000EC986 /* Main.storyboard */; };
 		443B24EF2A4EC13B000EC986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443B24EE2A4EC13B000EC986 /* Assets.xcassets */; };
 		443B24F22A4EC13B000EC986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443B24F02A4EC13B000EC986 /* LaunchScreen.storyboard */; };
+		443B24FB2A4ED86D000EC986 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 443B24FA2A4ED86D000EC986 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,6 @@
 		443B24E52A4EC13A000EC986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		443B24E72A4EC13A000EC986 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		443B24E92A4EC13A000EC986 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		443B24EC2A4EC13A000EC986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		443B24EE2A4EC13B000EC986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443B24F12A4EC13B000EC986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		443B24F32A4EC13B000EC986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443B24FB2A4ED86D000EC986 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,6 @@
 				443B24E52A4EC13A000EC986 /* AppDelegate.swift */,
 				443B24E72A4EC13A000EC986 /* SceneDelegate.swift */,
 				443B24E92A4EC13A000EC986 /* ViewController.swift */,
-				443B24EB2A4EC13A000EC986 /* Main.storyboard */,
 				443B24EE2A4EC13B000EC986 /* Assets.xcassets */,
 				443B24F02A4EC13B000EC986 /* LaunchScreen.storyboard */,
 				443B24F32A4EC13B000EC986 /* Info.plist */,
@@ -83,6 +82,9 @@
 			dependencies = (
 			);
 			name = "hw-13_Ruslan";
+			packageProductDependencies = (
+				443B24FA2A4ED86D000EC986 /* SnapKit */,
+			);
 			productName = "hw-13_Ruslan";
 			productReference = 443B24E22A4EC13A000EC986 /* hw-13_Ruslan.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +113,9 @@
 				Base,
 			);
 			mainGroup = 443B24D92A4EC13A000EC986;
+			packageReferences = (
+				443B24F92A4ED86D000EC986 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 443B24E32A4EC13A000EC986 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +132,6 @@
 			files = (
 				443B24F22A4EC13B000EC986 /* LaunchScreen.storyboard in Resources */,
 				443B24EF2A4EC13B000EC986 /* Assets.xcassets in Resources */,
-				443B24ED2A4EC13A000EC986 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		443B24EB2A4EC13A000EC986 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				443B24EC2A4EC13A000EC986 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		443B24F02A4EC13B000EC986 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +288,6 @@
 				INFOPLIST_FILE = "hw-13_Ruslan/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +315,6 @@
 				INFOPLIST_FILE = "hw-13_Ruslan/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		443B24F92A4ED86D000EC986 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		443B24FA2A4ED86D000EC986 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 443B24F92A4ED86D000EC986 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 443B24DA2A4EC13A000EC986 /* Project object */;
 }
