@@ -13,6 +13,9 @@
 		443B24EF2A4EC13B000EC986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443B24EE2A4EC13B000EC986 /* Assets.xcassets */; };
 		443B24F22A4EC13B000EC986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443B24F02A4EC13B000EC986 /* LaunchScreen.storyboard */; };
 		443B24FB2A4ED86D000EC986 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 443B24FA2A4ED86D000EC986 /* SnapKit */; };
+		443B24FD2A4FCC35000EC986 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B24FC2A4FCC35000EC986 /* TableViewCell.swift */; };
+		443B25052A4FE4BF000EC986 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B25042A4FE4BF000EC986 /* SettingsSwitchTableViewCell.swift */; };
+		443B25072A4FE4DF000EC986 /* SettingsOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443B25062A4FE4DF000EC986 /* SettingsOptionsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		443B24EE2A4EC13B000EC986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443B24F12A4EC13B000EC986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		443B24F32A4EC13B000EC986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		443B24FC2A4FCC35000EC986 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		443B25042A4FE4BF000EC986 /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		443B25062A4FE4DF000EC986 /* SettingsOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				443B24E52A4EC13A000EC986 /* AppDelegate.swift */,
 				443B24E72A4EC13A000EC986 /* SceneDelegate.swift */,
 				443B24E92A4EC13A000EC986 /* ViewController.swift */,
+				443B24FC2A4FCC35000EC986 /* TableViewCell.swift */,
+				443B25042A4FE4BF000EC986 /* SettingsSwitchTableViewCell.swift */,
+				443B25062A4FE4DF000EC986 /* SettingsOptionsTableViewCell.swift */,
 				443B24EE2A4EC13B000EC986 /* Assets.xcassets */,
 				443B24F02A4EC13B000EC986 /* LaunchScreen.storyboard */,
 				443B24F32A4EC13B000EC986 /* Info.plist */,
@@ -143,8 +152,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				443B24EA2A4EC13A000EC986 /* ViewController.swift in Sources */,
+				443B25072A4FE4DF000EC986 /* SettingsOptionsTableViewCell.swift in Sources */,
+				443B24FD2A4FCC35000EC986 /* TableViewCell.swift in Sources */,
 				443B24E62A4EC13A000EC986 /* AppDelegate.swift in Sources */,
 				443B24E82A4EC13A000EC986 /* SceneDelegate.swift in Sources */,
+				443B25052A4FE4BF000EC986 /* SettingsSwitchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

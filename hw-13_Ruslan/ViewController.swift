@@ -21,26 +21,30 @@ struct SettingsSwitchOption {
     let title: String
     let icon: UIImage?
     var isOn: Bool
+    let iconBackgroundColor: UIColor
 }
 
 struct SettingsOption {
     let title: String
     let icon: UIImage?
     let rightLabel: String?
+    let iconBackgroundColor: UIColor
     
 }
 
 
-
 class ViewController: UIViewController {
     
-//    private var names = ["John", "Dima", "Nikita", "Alexey", "Sonya", "Anna", "Elena", "Alexander", "Ivan", "Petr", "Ilya"]
+
     
     private var model = [Section]()
+    let spacing: CGFloat = 60.0
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SettingsSwitchTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SettingsOptionsTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         
         return tableView
@@ -48,9 +52,22 @@ class ViewController: UIViewController {
 
     
     private func setupCells() {
-        model.append(Section(options: [.switchCell(model: SettingsSwitchOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), isOn: true))]))
+        model.append(Section(options: [.switchCell(model: SettingsSwitchOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), isOn: true, iconBackgroundColor: .systemOrange)),
+                                       .standartCell(model: SettingsOption(title: "Wi-Fi", icon: UIImage(systemName: "wifi"), rightLabel: "Не подключено", iconBackgroundColor: .systemBlue)),
+                                       .standartCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "dot.radiowaves.up.forward"), rightLabel: "Вкл.", iconBackgroundColor: .systemBlue)),
+                                       .standartCell(model: SettingsOption(title: "Сотовая связь", icon: UIImage(systemName: "antenna.radiowaves.left.and.right"), rightLabel: nil, iconBackgroundColor: .systemGreen)),
+                                       .standartCell(model: SettingsOption(title: "Режим модема", icon: UIImage(systemName: "personalhotspot"), rightLabel: nil, iconBackgroundColor: .systemBlue)),
+                                       .switchCell(model: SettingsSwitchOption(title: "VPN", icon: UIImage(systemName: "globe"), isOn: true, iconBackgroundColor: .systemBlue))]))
         
-        model.append(Section(options: [.standartCell(model: SettingsOption(title: "Уведомления", icon: UIImage(systemName: "bell.circle.fill"), rightLabel: nil))]))
+        model.append(Section(options: [.standartCell(model: SettingsOption(title: "Уведомления", icon: UIImage(systemName: "bell.fill"), rightLabel: nil, iconBackgroundColor: .red)),
+                                       .standartCell(model: SettingsOption(title: "Звуки, тактильные сигнали", icon: UIImage(systemName: "speaker.wave.2.circle.fill"), rightLabel: nil, iconBackgroundColor: .systemPink)),
+                                       .standartCell(model: SettingsOption(title: "Не беспокоить", icon: UIImage(systemName: "moon.circle.fill"), rightLabel: nil, iconBackgroundColor: .systemPurple)),
+                                       .standartCell(model: SettingsOption(title: "Экранное время", icon: UIImage(systemName: "hourglass.circle.fill"), rightLabel: nil, iconBackgroundColor: .systemPink))]))
+        model.append(Section(options: [.standartCell(model: SettingsOption(title: "Основные", icon: UIImage(systemName: "gear"), rightLabel: nil, iconBackgroundColor: .lightGray)),
+                                       .standartCell(model: SettingsOption(title: "Пункт управления", icon: UIImage(systemName: "list.bullet.circle.fill"), rightLabel: nil, iconBackgroundColor: .lightGray)),
+                                       .standartCell(model: SettingsOption(title: "Экран и яркость", icon: UIImage(systemName: "a.circle.fill"), rightLabel: nil, iconBackgroundColor: .systemBlue)),
+                                       .standartCell(model: SettingsOption(title: "Экран «Домой»", icon: UIImage(systemName: "circle.grid.3x3.circle.fill"), rightLabel: nil, iconBackgroundColor: .blue)),
+                                       .standartCell(model: SettingsOption(title: "Универсальный доступ", icon: UIImage(systemName: "person.crop.circle.fill"), rightLabel: nil, iconBackgroundColor: .systemBlue))]))
     }
     
     
@@ -79,18 +96,45 @@ class ViewController: UIViewController {
 }
 
 
-
-
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model.count
+        return model[section].options.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = model[indexPath.section].options[indexPath.row]
-        return cell
+        
+        let models = model[indexPath.section].options[indexPath.row]
+        print(models)
+        
+
+        switch models.self {
+        case .standartCell(let models):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? SettingsOptionsTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: models)
+            return cell
+        
+
+        case .switchCell(let models):
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? SettingsSwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: models)
+            return cell
+            
+            
+        }
+
+
     }
     
-   
+    
+
 }
