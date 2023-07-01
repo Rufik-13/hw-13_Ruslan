@@ -43,9 +43,10 @@ class ViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
 //        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(SettingsSwitchTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(SettingsOptionsTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SettingsSwitchTableViewCell.self, forCellReuseIdentifier: "swichcell")
+        tableView.register(SettingsOptionsTableViewCell.self, forCellReuseIdentifier: "optioncell")
         tableView.dataSource = self
+        tableView.delegate = self
         
         return tableView
     }()
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
     private func setupCells() {
         model.append(Section(options: [.switchCell(model: SettingsSwitchOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), isOn: true, iconBackgroundColor: .systemOrange)),
                                        .standartCell(model: SettingsOption(title: "Wi-Fi", icon: UIImage(systemName: "wifi"), rightLabel: "Не подключено", iconBackgroundColor: .systemBlue)),
-                                       .standartCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "dot.radiowaves.up.forward"), rightLabel: "Вкл.", iconBackgroundColor: .systemBlue)),
+                                       .standartCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "pawprint"), rightLabel: "Вкл.", iconBackgroundColor: .systemBlue)),
                                        .standartCell(model: SettingsOption(title: "Сотовая связь", icon: UIImage(systemName: "antenna.radiowaves.left.and.right"), rightLabel: nil, iconBackgroundColor: .systemGreen)),
                                        .standartCell(model: SettingsOption(title: "Режим модема", icon: UIImage(systemName: "personalhotspot"), rightLabel: nil, iconBackgroundColor: .systemBlue)),
                                        .switchCell(model: SettingsSwitchOption(title: "VPN", icon: UIImage(systemName: "globe"), isOn: true, iconBackgroundColor: .systemBlue))]))
@@ -96,7 +97,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model[section].options.count
     }
@@ -105,8 +106,14 @@ extension ViewController: UITableViewDataSource {
         return model.count
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let models = model[indexPath.section].options[indexPath.row]
         print(models)
@@ -114,16 +121,17 @@ extension ViewController: UITableViewDataSource {
 
         switch models.self {
         case .standartCell(let models):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? SettingsOptionsTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "optioncell",for: indexPath) as? SettingsOptionsTableViewCell else {
                 return UITableViewCell()
             }
             cell.configure(with: models)
+            cell.accessoryType = .disclosureIndicator
             return cell
         
 
         case .switchCell(let models):
 
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? SettingsSwitchTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "swichcell",for: indexPath) as? SettingsSwitchTableViewCell else {
                 return UITableViewCell()
             }
             cell.configure(with: models)

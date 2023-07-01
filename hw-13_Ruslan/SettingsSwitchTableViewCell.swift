@@ -14,14 +14,11 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     public func configure(with model: SettingsSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
-//        label.text = model.rightLabel
         iconImageView.backgroundColor = model.iconBackgroundColor
         
     }
         
-        
-        
-    
+     
     
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -57,11 +54,18 @@ class SettingsSwitchTableViewCell: UITableViewCell {
     
     
     private func setupViews() {
+        contentView.addSubview(iconImageView)
         contentView.addSubview(label)
         contentView.addSubview(uiSwitch)
     }
 
     private func setupConstraints() {
+        iconImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(18)
+            make.height.equalTo(33)
+            make.width.equalTo(30)
+        }
 
         label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

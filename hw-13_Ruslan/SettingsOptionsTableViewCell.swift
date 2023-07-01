@@ -13,7 +13,7 @@ class SettingsOptionsTableViewCell: UITableViewCell {
         
         label.text = model.title
         iconImageView.image = model.icon
-        //label.text = model.rightLabel
+        label2.text = model.rightLabel
         iconImageView.backgroundColor = model.iconBackgroundColor
     }
     
@@ -30,6 +30,11 @@ class SettingsOptionsTableViewCell: UITableViewCell {
     private lazy var label: UILabel = {
         let label = UILabel()
         return label
+    }()
+    
+    private lazy var label2: UILabel = {
+        let label2 = UILabel()
+        return label2
     }()
 
     private lazy var uiSwitch: UISwitch = {
@@ -50,10 +55,10 @@ class SettingsOptionsTableViewCell: UITableViewCell {
     
     
     private func setupViews() {
-       
         contentView.addSubview(iconImageView)
         contentView.addSubview(label)
-        contentView.addSubview(uiSwitch)
+        contentView.addSubview(label2)
+        
     }
 
     private func setupConstraints() {
@@ -67,10 +72,12 @@ class SettingsOptionsTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.leading.equalTo(iconImageView.snp.trailing).offset(16)
         }
-        uiSwitch.snp.makeConstraints { make in
+        
+        label2.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
         }
+        
         
     }
     
